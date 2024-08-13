@@ -1,0 +1,29 @@
+<h1>Edit</h1>
+
+<% if @task.completed %>
+  <% completed = "checked" %>
+<% else %>
+  <% completed = "" %>
+<% end %>
+
+<%= form_with model: @task do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :details %>
+  <%= f.text_field :details %>
+  <div>
+    <input type="checkbox" id="<%= @task.title %>" name="<%= @task.title %>" <%= completed %> />
+    <label for="<%= @task.title %>">Completed</label>
+  </div>
+  <%= f.submit %>
+<% end %>
+
+<p></p>
+<div>
+  <%= link_to "Back to the Task", task_path %>
+</div>
+
+<p></p>
+<div>
+  <%= link_to "Back to Task List", index_path %>
+</div>
